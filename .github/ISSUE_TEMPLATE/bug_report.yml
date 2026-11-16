@@ -1,0 +1,32 @@
+name: Bug report / 问题反馈
+description: 安装、界面或普通账号被动采样问题
+body:
+  - type: markdown
+    attributes:
+      value: 请只提供脱敏诊断。不要粘贴 Cookie、Authorization、完整分享链接、原始 HAR、用户/订单信息或证书私钥。
+  - type: input
+    id: version
+    attributes:
+      label: 软件版本、Windows版本与Python版本/架构
+      placeholder: alpha.1 / Windows 11 x64 / Python 3.12 x64
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤与实际结果
+      description: 说明处于安装、新建、观察、绑定或同步哪一步，不提供真实团单或个人标识。
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: 脱敏诊断代码或错误提示
+      description: 只发错误类别和必要文本；本地路径中的用户名可替换。
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 已去除登录凭据、个人信息、真实业务标识和证书内容
+          required: true

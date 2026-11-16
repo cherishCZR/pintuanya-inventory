@@ -1,0 +1,20 @@
+{
+  "target": {
+    "label": "填写实际团单完整名称",
+    "share_text": "",
+    "resolved_group_id": null,
+    "association_evidence": null
+  },
+  "role": "participant",
+  "role_evidence": {"confirmed": false, "method": null, "observed_at": null},
+  "session_id": null,
+  "capture": {
+    "enabled": false,
+    "allowed_hosts": [],
+    "endpoint_rules": [],
+    "max_decoded_body_bytes": 2097152
+  },
+  "mapping_file": null,
+  "queue_file": "../data/events.jsonl",
+  "polling": {"enabled": false, "interval_seconds": 300, "max_cycles": 5, "max_requests_per_cycle": 100, "concurrency": 1}
+}

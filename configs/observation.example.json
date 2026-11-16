@@ -1,0 +1,7 @@
+{
+  "purpose": "unconfirmed_endpoint_observation_only",
+  "role_evidence": {"confirmed": false, "method": null},
+  "target": {"label": "填写实际团单完整名称", "entry_confirmed": false},
+  "allowed_hosts": [],
+  "host_evidence": {"session_id": null, "source_file": "../secrets/host-observations.jsonl"}
+}

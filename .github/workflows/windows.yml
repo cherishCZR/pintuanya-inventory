@@ -1,0 +1,47 @@
+name: Windows alpha checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2022, windows-2025]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          architecture: x64
+      - name: Install from a clean Windows interpreter
+        run: python scripts/install_windows.py
+      - name: Check launcher, dependencies, and offline contracts
+        run: |
+          .\.venv\Scripts\python.exe scripts/launch.py --check
+          .\.venv\Scripts\python.exe -m pip check
+          .\.venv\Scripts\python.exe -m pytest -q
+      - name: Check actual local proxy lifecycle without platform requests
+        run: .\.venv\Scripts\python.exe scripts/check_self_service_runtime.py
+      - name: Verify public source files and build reviewed artifact
+        run: |
+          .\.venv\Scripts\python.exe scripts/release.py verify --git-index
+          .\.venv\Scripts\python.exe scripts/release.py build
+      - uses: actions/upload-artifact@v7
+        with:
+          name: source-alpha-${{ matrix.os }}
+          path: |
+            dist/*.zip
+            dist/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 7

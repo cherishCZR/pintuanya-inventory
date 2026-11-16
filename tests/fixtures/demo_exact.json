@@ -1,0 +1,14 @@
+{
+  "_notice": "DEMO 模拟数据，与真实拼团呀无关",
+  "ok": true,
+  "group": "DEMO",
+  "data": {"items": [
+    {"id": "DEMO-P1", "name": "DEMO 演示商品", "variants": [
+      {"id": "DEMO-S1", "name": "规格甲", "remaining": 7, "capacity": 10, "buyable": true},
+      {"id": "DEMO-S2", "name": "规格乙", "remaining": 0, "capacity": 4, "buyable": false}
+    ]},
+    {"id": "DEMO-P2", "name": "DEMO 演示商品", "variants": [
+      {"id": "DEMO-S3", "name": "同名不同 ID", "remaining": "3", "buyable": true}
+    ]}
+  ]}
+}
